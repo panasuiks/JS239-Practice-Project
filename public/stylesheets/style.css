@@ -1,0 +1,37 @@
+#tag-filter-wrapper h2 {
+  display: inline;
+}
+
+h2 {
+  font-size: 1em;
+}
+
+.hidden {
+  display: none;
+}
+
+#contacts-wrapper {
+  display: flex;
+}
+
+button.selected {
+  outline: 2px solid black;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag-label {
+  display: inline-block;
+}
+
+#add-contact {
+  display: block;
+}
+
+#search {
+  display: block;
+}

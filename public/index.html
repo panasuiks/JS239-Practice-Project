@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/javascripts/handlebars.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="/javascripts/application.js"></script>
+  <script id="tags-template" class="full-template partial-template" type="text/handlebars">
+    {{#each tags}}
+      {{#if this}}
+      <button class="tag" data-tag="{{this}}">{{this}}</button>
+      {{/if}}
+    {{/each}}
+    {{#if new}}
+      <button class="tag new-tag">new tag</button>
+    {{/if}}
+  </script>
+  <script id="contacts-template" class="full-template" type="text/handlebars">
+
+    {{#each contacts}}
+    <div id="contact-wrapper-{{id}} class="contact-wrapper">
+      <h3>{{full_name}}</h3>
+      <p>Email: {{email}}</p>
+      <p>Phone: {{phone_number}}</p>
+      <div class="tag-wrapper">Tags: {{> tags-template}}<div>
+      <button id="edit-{{id}}" data-id={{id}} class="edit">Edit</button>
+      <button id="delete-{{id}}" data-id={{id}} class="delete">Delete</button>
+    </div>
+    {{else}}
+      <h2>No Contacts Found</h2>
+    {{/each}}
+
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>Contact Manager</h1>
+  </header>
+  <main>
+    <div id="contact-list-wrapper" class="view-wrapper">
+      <input type="text" id="search" placeholder="Search">
+      <h2 class="tag-label">Tag Filter: </h2><span id="tag-filter-wrapper" class="tag-wrapper"></span>
+      <button id="add-contact">Add New Contact</button>
+      <div id="contacts-wrapper"></div>
+    </div>
+    <div id="new-contact-wrapper" class="view-wrapper hidden">
+      <h2>Create Contact</h2>
+      <form id="new-contact-form" action="/api/contacts" method="post" novalidate>
+        <ul>
+          <li><label>Full name: </label><input type="text" name="full_name" required><span class="error"></span></li>
+          <li><label>Email address: </label><input type="text" name="email" required pattern="\w+@\w*\.\w+"><span
+              class="error"></span></li>
+          <li><label>Phone number: </label><input type="text" name="phone_number" required pattern="^\d{11}$"><span
+              class="error"></span></li>
+          <li>
+            <h2 class="tag-label">Tags: </h2><span id="tag-new-wrapper" class="tag-wrapper"></span>
+          </li>
+        </ul>
+        <input type="submit" value="Submit">
+        <button class="cancel">Cancel</button>
+      </form>
+    </div>
+    <div id="edit-contact-wrapper" class="view-wrapper hidden">
+      <h2>Edit Contact</h2>
+      <form id="edit-form" action="/api/contacts/0" method="put" novalidate>
+        <ul>
+          <li><label>Full name: </label><input type="text" name="full_name" required><span class="error"></span></li>
+          <li><label>Email address: </label><input type="text" name="email" required pattern="\w+@\w*\.\w+"><span
+              class="error"></span></li>
+          <li><label>Phone number: </label><input type="text" name="phone_number" required pattern="^\d{11}$"><span
+              class="error"></span></li>
+          <li>
+            <h2 class="tag-label">Tags: </h2><span id="tag-edit-wrapper" class="tag-wrapper"></span>
+          </li>
+        </ul>
+        <input type="submit" value="Submit">
+        <button class="cancel">Cancel</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>

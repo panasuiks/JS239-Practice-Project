@@ -1,0 +1,112 @@
+Features:
+Contacts have name, phone number and email address
+ability to add, edit, and delete Contacts
+search filters for matching contacts
+API can:
+  delete 1 Contact
+  Get all Contacts 
+  Get single contact
+  save contact
+  update an existing contact
+
+Header
+Contact display
+  shows tag options as buttons
+  says no contacts if none
+Update form
+  name
+  email
+  phone
+  tags (as buttons including new)
+    when tag is clicked, highlight, add selected class
+    popup looking for new tag name 
+      take input, add to tags
+Footer
+  developed by steve
+
+add contact button
+  add contact text to update form
+  show update form
+  hide contact displ
+
+add tag button
+
+
+submit button
+  read and validate form entries
+  if invalid, say why and highlight
+  if valid
+    send
+    update contacts
+    hide update form
+    show contact display
+  
+cancel button
+  empty form 
+  hide update form
+  show contact display
+
+edit button
+  populte update form with right contact
+  show update form
+  hide contact display
+
+delete button
+  show alert with yes or no
+  if yes
+    send delete to API
+    update contact list
+
+search change
+  filter contacts
+  display only filtered contacts
+
+
+
+  when it loads:
+    populate tag list
+    populate contacts
+    bind event handlers
+
+
+
+interact with API
+  get contacts
+  send new contacts
+  update contacts
+  contacts
+    get the contacts
+    convert them to useful (tag information as array for each contact and all available tags)
+    store them
+    output useful contact information
+    output useful tag information
+    add new contact
+    edit existing contact
+
+
+update the DOM
+  use contact information to create and display elements
+  take instruction from user listener, get information from contact object and update dom accordingly
+    reset tags or populate tags with existing values
+    view the contacts
+    add new contact
+    edit certain contact
+    delete certain contact (alert box)
+
+
+interact with user
+  tell other objects what the user wants
+    clicking tags (highlight and select)
+    typing in search
+    add new contact button
+      submit
+      cancel
+    edit (individual contact)
+      submit
+      cancel
+    delete (individual contact)
+      confirm
+      cancel
+    
+    
+
